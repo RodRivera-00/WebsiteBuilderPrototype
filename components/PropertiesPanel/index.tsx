@@ -70,8 +70,8 @@ const PropertiesPanel = () => {
 										onChange={(e) => {
 											const newStyle = {
 												...activeComponent.styles,
-											} as SystemStyleObject;
-											newStyle[style as keyof typeof newStyle] = e.target.value;
+											} as any;
+											newStyle[style] = e.target.value;
 											updateStyles(activeComponent, newStyle);
 										}}
 									/>
