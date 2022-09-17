@@ -44,6 +44,18 @@ const Home: NextPage = () => {
 			},
 			properties: {},
 		},
+		{
+			name: "Image",
+			type: "image",
+			text: "Alt Text 1",
+			styles: {
+				width: "200px",
+				height: "200px",
+			},
+			properties: {
+				src: "https://via.placeholder.com/200",
+			},
+		},
 	] as Component[];
 	const DrawerWidth = useBreakpointValue({
 		base: "340px",

@@ -1,5 +1,5 @@
 //Chakra
-import { Input, Text } from "@chakra-ui/react";
+import { Input, Text, TextProps } from "@chakra-ui/react";
 //Local
 import { Component } from "../../../types/component";
 interface HeadingProps {
@@ -14,16 +14,21 @@ const Heading = ({ component, isActive, saveValue }: HeadingProps) => {
 				<Input
 					sx={component.styles}
 					variant="unstyled"
-					defaultValue={component.text}
 					autoFocus={isActive}
 					value={component.text}
+					width="1920px"
 					onChange={(e) => {
 						saveValue(component, e.target.value);
 					}}
 				/>
 			)}
 			{!isActive && (
-				<Text sx={component.styles} {...component.properties}>
+				<Text
+					display="block"
+					width="full"
+					sx={component.styles}
+					{...(component.properties as TextProps)}
+				>
 					{component.text}
 				</Text>
 			)}

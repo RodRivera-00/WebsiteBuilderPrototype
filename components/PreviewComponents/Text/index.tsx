@@ -17,14 +17,16 @@ const TextComponent = ({ component, isActive, saveValue }: TextProps) => {
 					variant="unstyled"
 					defaultValue={component.text}
 					autoFocus={isActive}
+					width="1920px"
 					value={component.text}
 					onChange={(e) => {
 						saveValue(component, e.target.value);
 					}}
+					multiple
 				/>
 			)}
 			{!isActive && (
-				<Text sx={component.styles} {...component.properties}>
+				<Text sx={component.styles} {...(component.properties as TextProps)}>
 					{component.text}
 				</Text>
 			)}

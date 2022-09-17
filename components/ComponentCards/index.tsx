@@ -7,6 +7,7 @@ import { Stack, Box } from "@chakra-ui/react";
 import FormCard from "./FormCard";
 import TextCard from "./TextCard";
 import HeadingCard from "./HeadingCard";
+import ImageCard from "./ImageCard";
 import { Component, ComponentType } from "../../types/component";
 
 interface ComponentCardsProps {
@@ -23,6 +24,8 @@ const ComponentCards = ({ components, isOpen }: ComponentCardsProps) => {
 				return <TextCard component={component} isOpen={isOpen} />;
 			case ComponentType.Heading:
 				return <HeadingCard component={component} isOpen={isOpen} />;
+			case ComponentType.Image:
+				return <ImageCard component={component} isOpen={isOpen} />;
 		}
 	};
 	return (

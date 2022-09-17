@@ -4,13 +4,13 @@ import { Text, Box, Flex, Stack } from "@chakra-ui/react";
 import { useDrag } from "react-dnd";
 //Local
 import { Component } from "../../../types/component";
-interface FormCardProps {
+interface ImageCardProps {
 	component: Component;
 	isOpen: boolean;
 }
-const FormCard = ({ component, isOpen }: FormCardProps) => {
+const ImageCard = ({ component, isOpen }: ImageCardProps) => {
 	const [{ isDragging }, drag, dragPreview] = useDrag(() => ({
-		type: "ComponentDisabled",
+		type: "Component",
 		item: component,
 		collect: (monitor) => ({
 			isDragging: monitor.isDragging(),
@@ -34,31 +34,7 @@ const FormCard = ({ component, isOpen }: FormCardProps) => {
 					}}
 				>
 					<Flex flexGrow={1} alignItems="start" direction="column">
-						<Box background="#d5dade" width="100px" height="15px" />
-						<Box
-							background="#d5dade"
-							width="full"
-							height="25px"
-							marginTop="5px"
-						/>
-						<Box
-							background="#d5dade"
-							width="100px"
-							height="15px"
-							marginTop="5px"
-						/>
-						<Box
-							background="#d5dade"
-							width="full"
-							height="25px"
-							marginTop="5px"
-						/>
-						<Box
-							background="#d5dade"
-							width="50px"
-							height="25px"
-							marginTop="10px"
-						/>
+						<Box background="#d5dade" width="full" height="full" />
 					</Flex>
 					<Text
 						sx={{
@@ -81,10 +57,10 @@ const FormCard = ({ component, isOpen }: FormCardProps) => {
 					border="1px solid rgba(0,0,0,0.25)"
 					borderRadius="10px"
 				>
-					F
+					I
 				</Flex>
 			)}
 		</>
 	);
 };
-export default FormCard;
+export default ImageCard;

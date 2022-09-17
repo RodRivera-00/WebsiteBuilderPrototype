@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 
 //Local
 import { Context } from "../../pages/_app";
@@ -6,7 +6,7 @@ import { Box } from "@chakra-ui/react";
 import { Component, ComponentType } from "../../types/component";
 import Heading from "./Heading";
 import Text from "./Text";
-
+import ImageComponent from "./Image";
 const PreviewComponents = () => {
 	const { components, setComponents, activeComponent, setActiveComponent } =
 		useContext(Context);
@@ -38,6 +38,14 @@ const PreviewComponents = () => {
 						saveValue={updateComponents}
 					/>
 				);
+			case ComponentType.Image:
+				return (
+					<ImageComponent
+						component={component}
+						isActive={activeComponent?.id === component.id}
+						saveValue={updateComponents}
+					/>
+				);
 		}
 	};
 	const ActivateComponent = (component: Component) => {
@@ -46,20 +54,24 @@ const PreviewComponents = () => {
 	return (
 		<>
 			{components &&
-				components.map((component) => (
-					<Box
-						key={component.id}
-						sx={{
-							border:
-								activeComponent?.id === component.id
-									? "1px solid black"
-									: "none",
-						}}
-						onClick={() => ActivateComponent(component)}
-					>
-						{getComponent(component)}
-					</Box>
-				))}
+				components.map((component) => {
+					return (
+						<Box
+							key={component.id}
+							sx={{
+								border:
+									activeComponent?.id === component.id
+										? "1px solid black"
+										: undefined,
+								width: "fit-content",
+								height: "fit-content",
+							}}
+							onDoubleClick={() => ActivateComponent(component)}
+						>
+							{getComponent(component)}
+						</Box>
+					);
+				})}
 		</>
 	);
 };

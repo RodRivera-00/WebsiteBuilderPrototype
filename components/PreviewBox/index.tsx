@@ -1,5 +1,5 @@
 //Chakra
-import { Box, Button, Stack, Flex, Input } from "@chakra-ui/react";
+import { Box, Button, Stack, Flex, Input, Container } from "@chakra-ui/react";
 import { useContext, useState } from "react";
 
 //React DnD
@@ -9,7 +9,7 @@ import { Context } from "../../pages/_app";
 import { Component } from "../../types/component";
 import PreviewComponents from "../PreviewComponents";
 const PreviewBox = () => {
-	const { components, setComponents } = useContext(Context);
+	const { setComponents, setActiveComponent } = useContext(Context);
 	const [{ canDrop, isOver }, drop] = useDrop(() => ({
 		accept: "Component",
 		drop: (item) => {
@@ -57,8 +57,9 @@ const PreviewBox = () => {
 					marginTop: "20px",
 					border: "1px solid rgba(0,0,0,0.25)",
 				}}
+				onClick={() => setActiveComponent && setActiveComponent(undefined)}
 			>
-				<Box
+				<Flex
 					w="full"
 					h="full"
 					justifyContent="center"
@@ -77,7 +78,7 @@ const PreviewBox = () => {
 						},
 					}}
 				>
-					<Box
+					<Flex
 						ref={drop}
 						sx={{
 							maxW: "1920px",
@@ -87,9 +88,18 @@ const PreviewBox = () => {
 							background: "white",
 						}}
 					>
-						<PreviewComponents />
-					</Box>
-				</Box>
+						<Flex
+							width="fit-content"
+							height="fit-content"
+							flexWrap="wrap"
+							direction="column"
+							justifyContent="start"
+							alignItems="start"
+						>
+							<PreviewComponents />
+						</Flex>
+					</Flex>
+				</Flex>
 			</Box>
 		</Flex>
 	);
